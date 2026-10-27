@@ -4,19 +4,32 @@
     
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Tyler Reinmund</title>
-    <meta name="description" content="Personal portfolio of Tyler Reinmund — researcher, practitioner, and educator specializing in human-computer interaction and responsible AI." />
-    <meta name="author" content="Tyler Reinmund" />
+    <title>Mohammad Farahani</title>
+    <meta name="description" content="Personal website of Mohammad Farahani, researcher working on recommender systems." />
+    <meta name="author" content="Mohammad Farahani" />
 
-    <meta property="og:title" content="Tyler Reinmund" />
+    <meta property="og:title" content="Mohammad Farahani" />
     <meta property="og:description" content="Personal portfolio showcasing research, publications, and professional experience." />
     <meta property="og:type" content="website" />
 
     <meta name="twitter:card" content="summary_large_image" />
 
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <script>
+      // Apply the saved theme before the page paints, so there is no light flash in dark mode.
+      try {
+        if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add("dark");
+      } catch (e) {}
+    </script>
+
+    <!-- Font Awesome 4.7: the icon font of the CV (section icons and the chevron bullet) -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" />
+    <!-- Source Sans Pro, the font of the CV (Light, Regular, SemiBold + italics) -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-pro@4.5.11/300.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-pro@4.5.11/300-italic.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-pro@4.5.11/400.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-pro@4.5.11/400-italic.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/source-sans-pro@4.5.11/600.css" />
   </head>
 
   <body>

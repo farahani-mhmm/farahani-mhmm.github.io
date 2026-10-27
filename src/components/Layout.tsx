@@ -6,10 +6,12 @@ export function Layout() {
   return (
     <div className="flex min-h-screen flex-col">
       <Navbar />
-      <main className="flex-1">
+      <main className="flex-1 md:pl-16">
         <Outlet />
       </main>
-      <Footer />
+      <div className="md:pl-16">
+        <Footer />
+      </div>
     </div>
   );
 }

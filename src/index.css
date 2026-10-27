@@ -32,6 +32,11 @@
     --input: 0 0% 90%;
     --ring: 0 0% 7%;
 
+    /* CV navy (#1a1a75), used for headings and links like in the CV */
+    --brand: 240 64% 28%;
+    /* Pixelated gray (#9E9E9E) */
+    --brand-gray: 0 0% 62%;
+
     --radius: 0.5rem;
 
     --sidebar-background: 0 0% 98%;
@@ -72,6 +77,9 @@
     --border: 217 20% 16%;
     --input: 217 20% 16%;
     --ring: 210 20% 84%;
+
+    /* lighter navy so it stays readable on the dark background */
+    --brand: 240 80% 75%;
   }
 }
 
@@ -84,14 +92,28 @@
     @apply bg-background text-foreground font-sans;
   }
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Playfair Display', serif;
+  h1 {
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
+    font-weight: 300;
+  }
+}
+
+@layer components {
+  /* Link style, like the CV: no underline and no arrow, only the navy brand color. The color is
+     forced because many links also carry text-foreground / hover:text-* classes. */
+  .link-ext {
+    text-decoration: none;
+    color: hsl(var(--brand)) !important;
+    transition: opacity 0.2s;
+  }
+  .link-ext:hover {
+    opacity: 0.7;
   }
 }
 
 @layer utilities {
   .font-display {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Source Sans Pro', system-ui, sans-serif;
   }
 }
 

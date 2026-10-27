@@ -8,6 +8,9 @@ import { Layout } from "./components/Layout";
 import Index from "./pages/Index";
 import Research from "./pages/Research";
 import Resume from "./pages/Resume";
+import Failures from "./pages/Failures";
+import KnowMeMore from "./pages/KnowMeMore";
+import ReadingGroup from "./pages/ReadingGroup";
 import Contact from "./pages/Contact";
 import NotFound from "./pages/NotFound";
 
@@ -21,7 +24,7 @@ const RedirectHandler = () => {
     // Look for the '?p=/path' we created in 404.html
     const params = new URLSearchParams(window.location.search);
     const redirectPath = params.get('p');
-    
+
     if (redirectPath) {
       console.log("Redirecting to:", redirectPath);
       // Clean the URL and tell React Router to go there
@@ -39,13 +42,16 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         {/* We place it here so it has access to the Router context */}
-        <RedirectHandler /> 
-        
+        <RedirectHandler />
+
         <Routes>
           <Route element={<Layout />}>
             <Route path="/" element={<Index />} />
             <Route path="/research" element={<Research />} />
             <Route path="/resume" element={<Resume />} />
+            <Route path="/failures" element={<Failures />} />
+            <Route path="/know-me-more" element={<KnowMeMore />} />
+            <Route path="/reading-group" element={<ReadingGroup />} />
             <Route path="/contact" element={<Contact />} />
           </Route>
           <Route path="*" element={<NotFound />} />

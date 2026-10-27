@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { TermInfo } from "@/components/TermInfo";
 import { PersonLink } from "@/components/PersonLink";
+import { Typewriter } from "@/components/Typewriter";
+import { FunFact } from "@/components/FunFact";
 
 const news = [
   {
@@ -32,19 +34,35 @@ const news = [
   },
 ];
 
+// Events I have already attended, shown under "In the Past:" with a line through the event name (not the date).
+const past = [
+  {
+    date: "Sep 2024",
+    name: "Modern Software Production Summer School",
+    note: "TeIAS",
+    href: "https://teias.institute/cs-school202609/" as string | null,
+  },
+  {
+    date: "Jul 2026",
+    name: "Oxford ML School (OxML 2026)",
+    note: null as string | null,
+    href: "https://oxfordml.school/2026" as string | null,
+  },
+];
+
 const Index = () => {
   return (
-    <section className="container relative flex min-h-[calc(100vh-10rem)] flex-col items-center justify-center py-4">
-      <div className="mx-auto max-w-2xl text-center md:-translate-x-8">
+    <section className="container relative flex min-h-[calc(100vh-9rem)] flex-col items-center justify-center py-2">
+      <div className="mx-auto max-w-3xl text-center md:-translate-x-8">
         <img
           src="/profile.jpg"
           alt="Mohammad Farahani"
-          className="animate-fade-in-up mx-auto h-28 w-28 rounded-full border border-border object-cover object-[50%_35%]"
+          className="animate-fade-in-up mx-auto h-36 w-36 rounded-full border border-border object-cover object-[50%_35%]"
         />
-        <h1 className="animate-fade-in-up delay-100 mt-4 whitespace-nowrap font-display text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
+        <h1 className="animate-fade-in-up delay-100 mt-1 whitespace-nowrap font-display text-2xl font-semibold leading-tight tracking-tight text-foreground sm:text-3xl md:text-4xl">
           Mohammad Farahani
         </h1>
-        <p className="animate-fade-in-up delay-200 mt-3 text-base leading-relaxed text-foreground md:text-lg">
+        <p className="animate-fade-in-up delay-200 mt-2 text-base leading-relaxed text-foreground md:text-lg">
           I build{" "}
           <TermInfo
             name="recommender systems"
@@ -61,7 +79,7 @@ const Index = () => {
             href="https://en.wikipedia.org/wiki/Cryptocurrency_exchange"
             linkLabel="Wikipedia"
           />{" "}
-          for trading real-world assets (RWAs), with a close friend,{" "}
+          for real-world assets (RWAs), with a friend,{" "}
           <PersonLink
             name="Hamid"
             href="https://www.linkedin.com/in/hamidpourmohammad/"
@@ -71,21 +89,24 @@ const Index = () => {
           />
           .
         </p>
-        <p className="animate-fade-in-up delay-200 mt-4 text-base leading-relaxed text-muted-foreground">
-          <span className="font-semibold text-brand">fun fact:</span> “We can't overestimate the value of computers. Yes, they are great for playing games and forwarding funny emails. But real business is done on paper, okay? Write that down.”
-        </p>
-        <p className="animate-fade-in-up delay-300 mt-1 text-xs text-brand-gray">
-          Michael Scott in{" "}
-          <a
+        <Typewriter
+          className="mt-3 text-base leading-relaxed text-muted-foreground"
+          segments={[
+            { text: "Current activities:", className: "font-semibold text-brand" },
+            { text: " Enjoy problem solving via " },
+            { text: "CodeLita", href: "https://www.codelita.com/" },
+            { text: ", learning Dutch via " },
+            { text: "Duolingo", href: "https://www.duolingo.com/profile/farahani_mhmm" },
+          ]}
+        />
+        <div className="flex justify-center">
+          <FunFact
+            quote="We can't overestimate the value of computers. Yes, they are great for playing games and forwarding funny emails. But real business is done on paper, okay? Write that down."
+            source="“Business School” · Season 3, episode 16"
             href="https://www.thedundies.com/id/14086"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="link-ext hover:text-foreground"
-          >
-            “Business School” · Season 3, episode 16
-          </a>
-        </p>
-        <div className="animate-fade-in-up delay-300 mt-4 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+          />
+        </div>
+        <div className="animate-fade-in-up delay-300 mt-3 flex flex-col items-center gap-3 sm:flex-row sm:justify-center">
           <Button asChild size="lg" className="active:scale-[0.98] transition-transform">
             <Link to="/research">
               View Experiences
@@ -121,17 +142,40 @@ const Index = () => {
                   </>
                 ) : (
                   <>
-                    <a
-                      href={item.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="link-ext hover:text-muted-foreground"
-                    >
-                      {item.name}
-                    </a>
+                    {item.href ? (
+                      <a
+                        href={item.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="link-ext hover:text-muted-foreground"
+                      >
+                        {item.name}
+                      </a>
+                    ) : (
+                      item.name
+                    )}
                     {item.note && ` (${item.note})`}
                   </>
                 )}
+              </p>
+            </li>
+          ))}
+        </ul>
+
+        <p className="mt-5 text-xs text-brand-gray">In the Past:</p>
+        <ul className="mt-3 space-y-3">
+          {past.map((item) => (
+            <li key={item.name}>
+              <p className="text-[11px] font-medium uppercase tracking-wide text-brand">{item.date}</p>
+              <p className="mt-0.5 text-sm text-foreground line-through decoration-muted-foreground/70 opacity-70">
+                {item.href ? (
+                  <a href={item.href} target="_blank" rel="noopener noreferrer" className="link-ext hover:text-muted-foreground">
+                    {item.name}
+                  </a>
+                ) : (
+                  item.name
+                )}
+                {item.note && `, ${item.note}`}
               </p>
             </li>
           ))}

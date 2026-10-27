@@ -46,13 +46,13 @@ const Contact = () => {
           .
         </p>
 
-        <div className="animate-fade-in-up delay-200 mt-10 space-y-4">
+        <div className="animate-fade-in-up delay-200 mt-10 grid gap-4 sm:grid-cols-2">
           {contactLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
               {...(link.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-              className="group flex items-center gap-4 rounded-md border border-border px-5 py-4 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
+              className="group flex h-full items-center gap-4 rounded-md border border-border px-5 py-4 text-muted-foreground transition-colors hover:border-foreground hover:text-foreground"
             >
               <link.icon className="h-5 w-5 shrink-0 text-brand" />
               <span className="flex flex-col">
